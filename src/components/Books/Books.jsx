@@ -15,10 +15,12 @@ const Books = () => {
 
   return <div>{books.map(books =>{
     return(
-      <div>
-        <h3>{books.title}</h3>
-        <h4>{books.author}</h4>
-        <p>{books.description}</p>
+      <div className='container'>
+        <div className='card-div'>
+          <h3>{books.title}</h3>
+          <h4>{books.author}</h4>
+          <p>{books.description}</p>
+        </div>
       </div>
     )
   })}</div>
