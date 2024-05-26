@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import './Form.scss'
 
 export const Form = ()=>{
-    const initialState = {
+    const initialValue = {
         title: '',
         author: '',
         description: ''
@@ -11,7 +11,7 @@ export const Form = ()=>{
 
 
 const navigate = useNavigate();
-const [data, setData] = useState(initialState);
+const [data, setData] = useState(initialValue);
 const [message, setMessage] = useState('');
 const [btnDisabled, setBtnDisabled] = useState(true);
 
@@ -19,36 +19,28 @@ const [btnDisabled, setBtnDisabled] = useState(true);
 const handleInputChange = (e) =>{
     setData({
         ...data,
-        [e.target.title]: e.target.value,
+        [e.target.name]: e.target.value,
     });
 };
 
 const validateForm = () => {
-  const regExpEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   switch (true) {
-    case data.title == '':
+    case data.title === '':
         setMessage('Please insert a title');
         setBtnDisabled(true);
         break;
-    case data.title.length <= 3:
+    case data.title.length < 3:
         setMessage('Title must be least 3 characters')
         setBtnDisabled(true)
         break;
-    case data.author == '':
+    case data.author === '':
         setMessage('Please insert an author')
         setBtnDisabled(true)
         break;
-    case data.author.length <= 3:
+    case data.author.length < 3:
         setMessage('Author`s must be least 3 characters')
         setBtnDisabled(true)
         break;
-    case data.description == '':
-        setMessage('Please insert a description')
-        setBtnDisabled(true)
-        break;
-    case data.description.length <= 50:
-        setMessage('Description must be least 50 characters')
-        setBtnDisabled(true)
     default:
         setMessage('')
         setBtnDisabled(false)
@@ -62,18 +54,19 @@ useEffect(() =>{
 
 const handleOnSubmit = (e) => {
     e.preventDefault();
-   if(localStorage.newBook == undefined){
+   if(localStorage.getItem('newBook') === null){
     const firstBook = [data];
     localStorage.setItem('newBook', JSON.stringify(firstBook));
    }else {
-    let book = JSON.parse(localStorage.getItem(newBook));
+    let book = JSON.parse(localStorage.getItem('newBook'));
+    book.push(data)
     localStorage.removeItem('newBook')
     localStorage.setItem('newBook', JSON.stringify(book))
    }
-   setData(initialState);
+   setData(initialValue);
    setTimeout(() => {
     navigate('/books');
-   }, '3000');
+   }, '2000');
 };
 
 return (
@@ -90,9 +83,7 @@ return (
                 <textarea className='new-description' name="description" id="description" cols="30" rows="10" placeholder='Insert a new description' onChange={handleInputChange}></textarea>
             </div>
             <button className='btn-form' type='submit' value='send' onChange={handleInputChange} >Send</button>
-            <h4 className='validation-msg' id='validationMsg' name='validationMsg'>
-                {message}
-            </h4>
+            <h4 className='validation-msg'>{message}</h4>
         </form>
     </div>
 )

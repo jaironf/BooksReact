@@ -11,13 +11,13 @@ const Books = () => {
     }, [])
 
     if(books.length <= 0){
-      return <p>Cargando...</p> //CAMBIAR POR UN SPINNER
+      return <p>Cargando...</p>
     }
 
   return <div className='container'>{books.map((books, i) =>{
     return(
-      <div >
-        <div className='card' key='i'>
+      <div key={i}>
+        <div className='card'>
           <h3 className='card-title'>{books.title}</h3>
           <h4 className='card-author'>{books.author}</h4>
           <p className='card-description'>{books.description}</p>

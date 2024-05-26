@@ -9,7 +9,7 @@ $navbar-item-font-size: 1rem;
 $navbar-item-gap: 1rem;
 $breakpoint-mobile: 768px;
 
-// Estilos de la Navbar
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -50,7 +50,7 @@ $breakpoint-mobile: 768px;
   width: 100px;
 }
 
-// Estilos responsivos
+
 @media (max-width: $breakpoint-mobile) {
   .navbar {
     flex-direction: column;

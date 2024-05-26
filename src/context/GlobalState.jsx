@@ -6,14 +6,14 @@ const apiKey = 'ubWUFC6YeBj8i7SkhE5gb0FlXoTdFAaJ';
 const API_URL = 'https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-key=' + apiKey;
 
 
-const initialState ={
+const initialValue ={
     books: []
 }
 
-export const GlobalContext = createContext(initialState);
+export const GlobalContext = createContext(initialValue);
 
 export const GlobalProvider = ({children}) =>{
-    const [state, dispatch] = useReducer(AppReducer, initialState);
+    const [state, dispatch] = useReducer(AppReducer, initialValue);
 
     const getBooks = async () => {
         const res = await axios.get(API_URL);
