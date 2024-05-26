@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
+import './Form.scss'
 
 export const Form = ()=>{
     const initialState = {
@@ -45,8 +46,8 @@ const validateForm = () => {
         setMessage('Please insert a description')
         setBtnDisabled(true)
         break;
-    case data.description.length <= 100:
-        setMessage('Description must be least 100 characters')
+    case data.description.length <= 50:
+        setMessage('Description must be least 50 characters')
         setBtnDisabled(true)
     default:
         setMessage('')
@@ -88,7 +89,7 @@ return (
             <div className='inputs-form'>
                 <textarea className='new-description' name="description" id="description" cols="30" rows="10" placeholder='Insert a new description' onChange={handleInputChange}></textarea>
             </div>
-            <button className='btn-form' type='submit' value={'submit'} onChange={handleInputChange} disabled={btnDisabled}></button>
+            <button className='btn-form' type='submit' value='send' onChange={handleInputChange} disabled={btnDisabled}>Send</button>
             <h4 className='validation-msg' id='validationMsg' name='validationMsg'>
                 {message}
             </h4>
