@@ -9,7 +9,7 @@ $font-color: #333;
 $highlight-color: #007bff;
 $error-color: #dc3545;
 $disabled-color: #6c757d;
-$padding: 0.75rem;
+$padding: 0.50rem;
 $font-size: 1rem;
 $font-family: sans-serif;
 
@@ -17,6 +17,7 @@ $font-family: sans-serif;
   max-width: 600px;
   margin: 0 auto;
   margin-top: 20px;
+  margin-bottom: 50px;
   padding: 4rem;
   background: $background-color;
   border: 1px solid $border-color;

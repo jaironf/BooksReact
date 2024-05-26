@@ -46,6 +46,9 @@ $breakpoint-mobile: 768px;
     }
   }
 }
+.logo-header{
+  width: 100px;
+}
 
 // Estilos responsivos
 @media (max-width: $breakpoint-mobile) {

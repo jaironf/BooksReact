@@ -89,7 +89,7 @@ return (
             <div className='inputs-form'>
                 <textarea className='new-description' name="description" id="description" cols="30" rows="10" placeholder='Insert a new description' onChange={handleInputChange}></textarea>
             </div>
-            <button className='btn-form' type='submit' value='send' onChange={handleInputChange} disabled={btnDisabled}>Send</button>
+            <button className='btn-form' type='submit' value='send' onChange={handleInputChange} >Send</button>
             <h4 className='validation-msg' id='validationMsg' name='validationMsg'>
                 {message}
             </h4>
